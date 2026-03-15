@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: processor-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: processor-service
+  template:
+    metadata:
+      labels:
+        app: processor-service
+    spec:
+      containers:
+      - name: processor-service
+        image: processor-service:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+          value: "kafka:9092"
+        - name: SPRING_DATA_MONGODB_URI
+          value: "mongodb://mongo:27017/log_db"
