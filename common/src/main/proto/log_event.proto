@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.example.loganalytics.common.grpc;
+
+option java_multiple_files = true;
+option java_package = "com.example.loganalytics.common.grpc";
+option java_outer_classname = "LogEventProto";
+
+service LogIngestionService {
+  rpc SendLog(LogEvent) returns (LogResponse);
+}
+
+message LogEvent {
+  string serviceName = 1;
+  string message = 2;
+  string level = 3;  // INFO, WARN, ERROR
+  int64 timestamp = 4;
+}
+
+message LogResponse {
+  bool success = 1;
+  string message = 2;
+}
