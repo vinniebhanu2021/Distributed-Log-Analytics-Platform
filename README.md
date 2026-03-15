@@ -1,7 +1,4 @@
 This project is a microservices-based distributed system for ingesting, processing, and analyzing log events.
-
-![Dashboard Preview](docs/images/dashboard.png)
-
 ## Architecture
 
 ```mermaid
